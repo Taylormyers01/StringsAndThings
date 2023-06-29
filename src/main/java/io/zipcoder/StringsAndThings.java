@@ -1,5 +1,5 @@
 package io.zipcoder;
-
+import java.util.regex.Pattern;
 
 /**
  * @author tariq
@@ -15,7 +15,17 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        String[] splitString = input.split(" ");
+        int count = 0;
+
+        for(int i = 0; i < splitString.length; i++){
+            if(splitString[i].charAt(splitString[i].length() -1 ) == 'x' ||splitString[i].charAt(splitString[i].length() -1 ) == 'y' || splitString[i].charAt(splitString[i].length() -1 ) == 'z' ){
+                count++;
+            }
+        }
+
+
+        return count;
     }
 
     /**
@@ -28,7 +38,8 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        base = base.replace(remove, "");
+        return base;
     }
 
     /**
@@ -40,7 +51,26 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        int isCount = 0;
+        int notCount = 0;
+        for(int i=2; i <= input.length(); i++){
+            String var1 = input.substring(i-2, i);
+            if(var1.equals("is")){
+                isCount++;
+            }
+        } 
+        for(int i = 3; i <= input.length(); i++){
+            String var1 = input.substring(i-3, i);
+            if(var1.equals("not")){
+                notCount++;
+            }
+        }
+        if(isCount == notCount && isCount > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**
@@ -51,7 +81,18 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        boolean happy = false;
+        for(int i = 2; i<input.length(); i++){
+            String var1 = input.substring(i-2, i);
+            if(var1.equals("gg")){
+                happy = true;
+                i++;
+            }
+            if(var1.contains("g") && var1.equals("gg")==false){
+                happy = false;
+            }
+        }
+        return happy;
     }
 
 
@@ -63,6 +104,16 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int count = 0;
+        for(int i = 3; i< input.length(); i++){
+            String var1 = input.substring(i-3, i);
+            String var2 = var1.substring(0,1);
+            var2 = (var2 + var2 + var2);
+            //System.out.println(var2);
+            if(var1.equalsIgnoreCase(var2)){
+                count++;
+            }
+        }
+        return count;
     }
 }

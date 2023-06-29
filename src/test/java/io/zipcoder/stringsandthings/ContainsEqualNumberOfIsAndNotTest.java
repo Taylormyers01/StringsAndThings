@@ -1,5 +1,4 @@
 package io.zipcoder.stringsandthings;
-
 import io.zipcoder.StringsAndThings;
 import org.junit.Assert;
 import org.junit.Before;
